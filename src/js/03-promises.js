@@ -12,7 +12,7 @@ function onSubmit(evt) {
   const step = Number(evt.target.step.value);
   const amount = Number(evt.target.amount.value);
 
-  for (let position = 1; position <= amount; position += 1){
+  for (let position = 1; position <= amount; position += 1) {
     createPromise(position, delay)
       .then(({ position, delay }) => {
         setTimeout(() => {
@@ -24,10 +24,11 @@ function onSubmit(evt) {
         setTimeout(() => {
           Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
         }, delay);
+        delay += step;
       });
   }
-  delay += step;
 }
+
 
 
 function createPromise(position, delay) {
